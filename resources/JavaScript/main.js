@@ -64,8 +64,8 @@ function launch_new_draft(event){
   draft_config.num_QBs = document.getElementById('form_num_QBs').value;
   draft_config.num_RBs = document.getElementById('form_num_RBs').value;
   draft_config.num_WRs = document.getElementById('form_num_WRs').value;
-  draft_config.num_WR_RB = document.getElementById('form_num_Flex').value;
-  draft_config.num_WR_RB_TE = document.getElementById('form_num_Flex').value;
+  draft_config.num_WR_RB = document.getElementById('form_num_WR_RB').value;
+  draft_config.num_WR_RB_TE = document.getElementById('form_num_WR_RB_TE').value;
   draft_config.num_TEs = document.getElementById('form_num_TEs').value;
   draft_config.num_Ks = document.getElementById('form_num_Ks').value;
   draft_config.num_DEFs = document.getElementById('form_num_DEFs').value;
@@ -82,8 +82,16 @@ function launch_new_draft(event){
 }
 
 function draw_team_boards(draft_config){
+  hide_draft_config();
   var boards = document.getElementById('team_boards_cont');
+  boards.innerHTML = '';
+  if(boards){console.log('boards exists');}
   for(i=1; i<=draft_config.num_teams; i++){
+    boards.innerHTML += "<div class='team_board'><div class='team_board_header'>Team"+i+"</div></div>";
+    /*for(i=0;i<=draft_config.num_DBs;i++){
+      boards.innerHTML+= "<div class='team_board_position team_board_qb'>QB</div><div class='team_board_player'></div>";
+    }*/ //this loop crashed js
+    
 
   }
 

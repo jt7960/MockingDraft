@@ -23,7 +23,7 @@
         <div id='PS_Player_Row_Cont'>
         </div>
     </div>
-    <div id='team_boards_container'></div>
+    <div id='team_boards_cont'></div>
     <div id='draft_history_list'></div>
     </div>
 </div>
