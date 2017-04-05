@@ -27,8 +27,8 @@ class FFDraft extends CI_Controller {
         );
         $cxContext = stream_context_create($aContext);
         $File = file_get_contents("https://fantasyfootballcalculator.com/adp_xml.php", False, $cxContext);
-        if(!file_exists(getcwd() . "\\application\\resources\\xml\\ff_calc_xml.xml") || (time() - filemtime(getcwd() . "\\application\\resources\\xml\\ff_calc_xml.xml") > 3600)){
-            file_put_contents(getcwd() . "\\application\\resources\\xml\\ff_calc_xml.xml", $File);
+        if(!file_exists(getcwd() . "\\resources\\xml\\ff_calc_xml.xml") || (time() - filemtime(getcwd() . "\\resources\\xml\\ff_calc_xml.xml") > 3600)){
+            file_put_contents(getcwd() . "\\resources\\xml\\ff_calc_xml.xml", $File);
             }
         }
     }

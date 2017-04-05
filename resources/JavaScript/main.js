@@ -89,4 +89,4 @@ function draw_team_boards(draft_config){
 
 }
 
-loadXML("../application/resources/xml/ff_calc_xml.xml");
+loadXML("/resources/xml/ff_calc_xml.xml");
