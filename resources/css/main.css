@@ -1,0 +1,94 @@
+body{
+    background-color:beige;
+    grid-gap:1px;
+    font-family: sans-serif;
+    text-align:center;
+}
+
+#page_cover{ /*this protects the page from being interacted with while the module is up*/
+    left:0px;
+    top:0px;
+    position:fixed;
+    width:100vw;
+    height:100vh;
+}
+
+#config_module{
+    display:none;
+    position:fixed;
+    width:500px;
+    height:800px;
+    background:white;
+    left:25%;
+    top:10%;
+    border: 5px groove blue;
+    border-radius:10px;
+}
+
+#module_title{
+    /*margin:5px;*/
+    padding:5px;
+    text-align:center;
+    font-size: 2em;
+    border-bottom: 5px groove blue;
+}
+
+#config_form_cont{
+    padding-top:25px;
+    text-align:center;
+}
+
+#standard_league_def{
+    display:block;
+}
+#idp_league_def{
+    display:none;
+}
+
+.menu_container{
+    width:99vw;
+    display:grid;
+    grid-template-columns:33vw 33vw 33vw;
+    grid-gap: 1px;
+    border:1px solid black;
+    min-height:10vh;
+    max-height: 10vh;
+}
+
+.body_container{
+    display:grid;
+    grid-template-columns:25vw 60vw 15vw;
+    border: 1px solid black;
+    height:87vh;
+    width:100vw;
+}
+
+#PS_Cont{
+    width:100%;
+}
+#PS_Title_Cont{
+    display:grid;
+    grid-template-columns:10% 75% 10%;
+}
+#PS_Player_Row_Cont{
+    border:1px solid black;
+    overflow:scroll;
+    height:85vh;
+}
+
+.PS_Player_Row{
+    padding-left:5px;
+    padding-right:5px;
+    display:grid;
+    grid-template-columns:10% 75% 10%;
+}
+#PS_Player_Row:odd{
+    background-color:lightblue;
+}
+#PS_Player_Row:even{
+    background-color:lightcoral;
+}
+.PS_Player_row:hover{
+    background-color:red;
+    cursor:pointer;
+}
