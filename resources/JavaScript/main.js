@@ -87,14 +87,47 @@ function draw_team_boards(draft_config){
   boards.innerHTML = '';
   if(boards){console.log('boards exists');}
   for(i=1; i<=draft_config.num_teams; i++){
-    boards.innerHTML += "<div class='team_board'><div class='team_board_header'>Team"+i+"</div></div>";
-    /*for(i=0;i<=draft_config.num_DBs;i++){
-      boards.innerHTML+= "<div class='team_board_position team_board_qb'>QB</div><div class='team_board_player'></div>";
-    }*/ //this loop crashed js
-    
-
+    boards.innerHTML += "<div class='team_board' id='team"+i+"board'><div class='team_board_header'>Team"+i+"</div></div>";
+    for(qb=1;qb<=draft_config.num_QBs;qb++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_qb'>QB</div><div class='team_board_player'></div>";
+      }
+    for(rb=1;rb<=draft_config.num_RBs;rb++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_rb'>RB</div><div class='team_board_player'></div>";
+      }
+    for(wr=1;wr<=draft_config.num_WRs;wr++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_wr'>WR</div><div class='team_board_player'></div>";
+      }
+    for(flx=1;flx<=draft_config.num_WR_RB;flx++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_WR_RB'>FLEX(WR/RB): </div><div class='team_board_player'></div>";
+    }
+    for(flx=1;flx<=draft_config.num_WR_RB_TE;flx++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_WR_RB_TE'>FLEX(WR/RB/TE): </div><div class='team_board_player'></div>";
+    }
+    for(te=1;te<=draft_config.num_TEs;te++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_te'>TE</div><div class='team_board_player'></div>";
+      }
+    for(k=1;k<=draft_config.num_Ks;k++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_k'>K</div><div class='team_board_player'></div>";
+      }
+    for(def=1;def<=draft_config.num_DEFs;def++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_def'>DEF</div><div class='team_board_player'></div>";
+      }
+    for(db=1;db<=draft_config.num_DBs;db++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_db'>DB</div><div class='team_board_player'></div>";
+      }
+    for(lb=1;lb<=draft_config.num_LBs;lb++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_lb'>LB</div><div class='team_board_player'></div>";
+      }
+    for(dl=1;dl<=draft_config.num_LBs;dl++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_dl'>DL</div><div class='team_board_player'></div>";
+      }
+    for(idp=1;idp<=draft_config.num_IDP_Flex;idp++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_idp_flex'>IDP Flex</div><div class='team_board_player'></div>";
+      }
+    for(ben=1;ben<=draft_config.num_Bench;ben++){
+      document.getElementById('team'+i+'board').innerHTML+= "<div class='team_board_bench'>Bench</div><div class='team_board_player'></div>";
+      }
+    }
   }
-
-}
 
 loadXML("/resources/xml/ff_calc_xml.xml");
