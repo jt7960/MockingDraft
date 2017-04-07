@@ -18,6 +18,13 @@ class FFDraft extends CI_Controller {
         $this->load->view('football/draft_config.php');
     }
 
+    public function load_team_boards(){
+        if($_POST){
+            $data['config'] = json_decode($_POST);
+            $this->load->view('football/team_boards.php', $config);
+        }
+    }
+
     private function refresh_ffCalcXML(){
         $aContext = array(
             'http' => array(
