@@ -65,8 +65,8 @@ function launch_new_draft(event){
     'postition':{'name':'RB', 'quantity':document.getElementById('form_num_RBs').value},
     'postition':{'name':'WR', 'quantity':document.getElementById('form_num_WRs').value},
     'postition':{'name':'TE', 'quantity':document.getElementById('form_num_TEs').value},
-    'postition':{'name':'RB_WR', 'quantity':document.getElementById('form_num_RB_WRs').value},
-    'postition':{'name':'RB_WR_TE', 'quantity':document.getElementById('form_num_RB_WR_TEs').value},
+    'postition':{'name':'WR_RB', 'quantity':document.getElementById('form_num_WR_RB').value},
+    'postition':{'name':'WR_RB_TE', 'quantity':document.getElementById('form_num_WR_RB_TE').value},
     'postition':{'name':'PK', 'quantity':document.getElementById('form_num_PKs').value},
     'postition':{'name':'DEF', 'quantity':document.getElementById('form_num_DEFs').value},
     'postition':{'name':'LB', 'quantity':document.getElementById('form_num_LBs').value},
@@ -75,7 +75,7 @@ function launch_new_draft(event){
     'postition':{'name':'IDP_Flex', 'quantity':document.getElementById('form_num_IDP_Flex').value},
     'postition':{'name':'Bench', 'quantity':document.getElementById('form_num_bench').value}
   }
-  load_team_boards(config);
+  load_team_boards(draft_config);
 
 }
 function load_team_boards(config){
@@ -84,6 +84,7 @@ function load_team_boards(config){
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
+        console.log('onreadystate fired');
       document.getElementById('team_baords_cont').innerHTML += this.responseXML;
         }
   xhr.send(config);

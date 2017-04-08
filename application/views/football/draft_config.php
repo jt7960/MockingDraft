@@ -43,10 +43,10 @@
             echo form_label('TEs: ', 'form_num_TEs');
             echo form_dropdown('num_TEs', $num_TEs, array('1'=>'1'), array('id'=>'form_num_TEs'));
             echo '<br><br>';
-            //Number of Ks
-            $num_Ks = array('0'=>'0', '1'=>'1', '2'=>'2', '3'=>'3');
-            echo form_label('Ks: ', 'form_num_Ks');
-            echo form_dropdown('num_Ks', $num_Ks, array('1'=>'1'), array('id'=>'form_num_Ks'));
+            //Number of PKs
+            $num_PKs = array('0'=>'0', '1'=>'1', '2'=>'2', '3'=>'3');
+            echo form_label('PKs: ', 'form_num_PKs');
+            echo form_dropdown('num_PKs', $num_PKs, array('1'=>'1'), array('id'=>'form_num_PKs'));
             echo '<br><br>';
             //Standard or IDP
             $idp = array('Standard'=>'Standard', 'IDP'=>'IDP');
