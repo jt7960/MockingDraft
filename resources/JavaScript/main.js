@@ -75,21 +75,29 @@ function launch_new_draft(event){
     'postition':{'name':'IDP_Flex', 'quantity':document.getElementById('form_num_IDP_Flex').value},
     'postition':{'name':'Bench', 'quantity':document.getElementById('form_num_bench').value}
   }
-  load_team_boards(draft_config);
+  ajaxPOST('/ffdraft/load_team_boards', draft_config);
+}
 
-}
-function load_team_boards(config){
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", '/FFDraft/load_team_boards', true);
+function ajaxPOST(url, data){
+  xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = load_team_boards;
+  xhr.open('POST', url);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log('onreadystate fired');
-      document.getElementById('team_baords_cont').innerHTML += this.responseXML;
-        }
-  xhr.send(config);
-    }
+  xhr.send(data);
+  console.log(data); //need to rething the draft_config json object, position is just rewritting itself.
 }
+
+function load_team_boards(config){
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        document.getElementById('team_boards_cont').innerHTML += xhr.responseText;
+      }
+      else{
+        alert('could not load the team boards, something is wrong');
+      }
+    }
+  }
+
 
 loadXML("/resources/xml/ff_calc_xml.xml");
 

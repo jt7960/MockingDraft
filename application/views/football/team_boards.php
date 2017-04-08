@@ -1,5 +1,6 @@
-<?php
 
+<?php
+/*
 for($team = 1, $team <= $config->teams, $team++){
     echo "<div class='team_board' id='team".$team."board'><div class='team_board_name' id='team_".$team."_name'>Team ".$team."</div>";
     foreach($config->position as $position){
@@ -12,4 +13,8 @@ for($team = 1, $team <= $config->teams, $team++){
     }
     echo "</div>";
 }
+*/
+?>
+
+team boards view text
 

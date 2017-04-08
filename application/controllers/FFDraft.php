@@ -12,6 +12,7 @@ class FFDraft extends CI_Controller {
     public function index(){
         $this->load->helper('form');
         $data['title'] = 'FF Draft';
+        $data['config'] = '';
         $this->load->view('common/head.php', $data);
         $this->load->view('football/draft.php');
         $this->load->view('common/foot.php');
@@ -20,8 +21,9 @@ class FFDraft extends CI_Controller {
 
     public function load_team_boards(){
         if($_POST){
+            print_r($_POST);
             $data['config'] = json_decode($_POST);
-            $this->load->view('football/team_boards.php', $config);
+            $this->load->view('football/team_boards.php', $data['config']);
         }
     }
 
