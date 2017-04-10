@@ -20,13 +20,9 @@ class FFDraft extends CI_Controller {
     }
 
     public function load_team_boards(){
-            
-        echo 'hellow world';
-        $data = file_get_contents('php://input');
-        echo $data;
-        print_r($data);
-        //$data['config'] = json_decode($_POST);
-        //$this->load->view('football/team_boards.php', $data['config']);
+        $data['config'] = file_get_contents('php://input');
+        //print_r($data);
+        $this->load->view('football/team_boards.php', $data);
     }
 
     private function refresh_ffCalcXML(){

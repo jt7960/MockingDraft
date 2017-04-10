@@ -59,9 +59,9 @@ function select_league_type(){
 
 function launch_new_draft(event){
   event.preventDefault();
-  var draft_config = { //need to rewrite this, position is just rewritting over itself
+  var draft_config = {
     'teams':document.getElementById('form_num_teams').value,
-    'postitions':{
+    'positions':{
       'QB':{'name':'QB', 'quantity':document.getElementById('form_num_QBs').value},
       'RB':{'name':'RB', 'quantity':document.getElementById('form_num_RBs').value},
       'WR':{'name':'WR', 'quantity':document.getElementById('form_num_WRs').value},

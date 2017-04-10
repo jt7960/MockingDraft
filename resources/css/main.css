@@ -96,18 +96,20 @@ body{
 
 /*Team Boards*/
 .team_board{
-    display:grid;
-    grid-template-columns:10% 80% 10%;
+    margin:10px;
+    max-width:400px;
+    max-height:600px;
+    border:1px solid black;
+    border-collapse: collapse;
 }
-.team_board_name{
-    grid-column:1/3;
-}
-.team_board_position{
-    grid-column:1/1;
+
+.team_board td{
+    border:1px solid black;
 }
 .team_board_player{
-    grid-column:2/2;
+    width:70%;
 }
-team_board_pick{
-    grid-column:3/3;
+
+.team_board_pick, team_board_position{
+    width:15%;
 }
