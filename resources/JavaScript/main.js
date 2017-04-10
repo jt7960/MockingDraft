@@ -82,31 +82,17 @@ function launch_new_draft(event){
 }
 
 function ajaxPOST(url, data){
-  console.log(url);
-  console.log(data);
   xhr = new XMLHttpRequest();
-  if(xhr){console.log('xhr...')};
-  
-  if(xhr.open('POST', 'http://localhost:8080/ffdraft/load_team_boards', true)){
-    console.log('it opened i guess');
-    
-  }
-  else{
-    console.log('it did not open!');
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  }
-  
-  console.log('hello?');
   xhr.onreadystatechange = function(){
-    
     if (this.readyState == 4 && this.status == 200) {
-            document.getElementById('team_boards_cont').innerHTML += xhr.status;
-            document.getElementById('team_boards_cont').innerHTML += xhr.resposeXML.toString();
+        document.getElementById('team_boards_cont').innerHTML += xhr.responseText;
+      }
     }
+  xhr.open('POST', '/ffdraft/load_team_boards', true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  data = JSON.stringify(data);
   xhr.send(data);
-  console.log(data); //need to rething the draft_config json object, position is just rewritting itself.
-    }
-  }
+}
 
 
 loadXML("/resources/xml/ff_calc_xml.xml");
