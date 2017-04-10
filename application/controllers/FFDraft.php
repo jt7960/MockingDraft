@@ -20,6 +20,7 @@ class FFDraft extends CI_Controller {
     }
 
     public function load_team_boards(){
+        echo 'hellow world';
         if($_POST){
             print_r($_POST);
             $data['config'] = json_decode($_POST);
