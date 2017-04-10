@@ -9,8 +9,8 @@ for($team = 1; $team <= $config->teams; $team++){
         for($i = 1; $i <= $position->quantity; $i++){
             echo "<tr class='team_board_position_row ".$position->name."'>
             <td class='team_board_position'>".$position->name."</td>
-            <td class='team_board_player'>test</td>
-            <td class='team_board_pick'>test</td>
+            <td class='team_board_player'></td>
+            <td class='team_board_pick'></td>
             </tr>";
             }
         }
