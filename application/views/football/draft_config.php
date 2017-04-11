@@ -99,6 +99,11 @@
             echo form_label('Draft Type: ', 'form_draft');
             echo form_dropdown('draft', $draft, array('Auto'=>'Auto'), array('id'=>'form_draft'));
             echo '<br><br>';
+            //ranking source
+            $ranks = array('ffcalc'=>'FantasyFootballCalculator.com','nfl.com'=>'NFL.com');
+            echo form_label('Ranking Source: ', 'form_ranks');
+            echo form_dropdown('ranks', $ranks, array('ffcalc'=>'FantasyFootballCalculator.com'), array('id'=>'form_ranks'));
+            echo '<br><br>';
             //form submit
             echo form_submit('draft_config_submit', 'Submit', array('id'=>'draft_config_submit', 'onclick'=>'launch_new_draft(event)'));
             //form close

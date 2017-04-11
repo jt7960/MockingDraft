@@ -64,32 +64,32 @@ body{
 }
 
 /*Draft Player List*/
-#PS_Cont{
+#player_list_container{
     width:100%;
 }
-#PS_Title_Cont{
+#player_list_title{
     display:grid;
     grid-template-columns:10% 75% 10%;
 }
-#PS_Player_Row_Cont{
+#player_list{
     border:1px solid black;
     overflow:scroll;
     height:85vh;
 }
 
-.PS_Player_Row{
+.player_list_row{
     padding-left:5px;
     padding-right:5px;
     display:grid;
     grid-template-columns:10% 75% 10%;
 }
-#PS_Player_Row:odd{
+.player_list_row:odd{
     background-color:lightblue;
 }
-#PS_Player_Row:even{
+.player_list_row:even{
     background-color:lightcoral;
 }
-.PS_Player_row:hover{
+.player_list_row:hover{
     background-color:red;
     cursor:pointer;
 }

@@ -14,13 +14,13 @@
     </div>
     <div class='body_container' onclick='hide_draft_config()'>
 
-    <div id='PS_Cont'>
-        <div id='PS_Title_Cont'>
+    <div id='player_list_container'>
+        <div id='player_list_title'>
             <div>Postion</div>
             <div>Player Name</div>
             <div>ADP</div>
         </div>
-        <div id='PS_Player_Row_Cont'>
+        <div id='player_list'>
         </div>
     </div>
     <div id='team_boards_cont'></div>
