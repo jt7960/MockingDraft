@@ -95,13 +95,15 @@ body{
 }
 
 /*Team Boards*/
-#team_board_cont{
+#team_boards_cont{
     overflow:scroll;
+    max-height:90vh;
+    border: 1px solid black;
 }
 
 .team_board{
     margin:10px;
-    max-width:400px;
+    max-width:30%;
     max-height:600px;
     float:left;
     border:1px solid black;

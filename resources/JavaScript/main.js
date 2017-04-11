@@ -27,7 +27,7 @@ function loadXML_HtmlWriter(xml){
 }
 
 function draft_player(){
-  console.log('player_drafted');
+  
 }
 
 function hide_draft_config(){
@@ -79,13 +79,18 @@ function launch_new_draft(event){
   }
   ajaxPOST('/ffdraft/load_team_boards', draft_config);
   hide_draft_config();
+  var num_rounds;
+  for(var position in draft_config.positions){
+    num_rounds += parseInt(position.quantity);
+  }
+  console.log(num_rounds);
 }
 
 function ajaxPOST(url, data){
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('team_boards_cont').innerHTML += xhr.responseText;
+        document.getElementById('team_boards_cont').innerHTML = xhr.responseText;
       }
     }
   xhr.open('POST', '/ffdraft/load_team_boards', true);

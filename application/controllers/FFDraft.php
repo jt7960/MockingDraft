@@ -25,7 +25,7 @@ class FFDraft extends CI_Controller {
         $this->load->view('football/team_boards.php', $data);
     }
 
-    private function refresh_ffCalcXML(){
+    /*private function refresh_ffCalcXML(){
         $aContext = array(
             'http' => array(
             'proxy' => 'web-proxy.boi.hp.com:8080',
@@ -38,11 +38,11 @@ class FFDraft extends CI_Controller {
             file_put_contents(getcwd() . "\\resources\\xml\\ff_calc_xml.xml", $File);
             }
         }
-    }/*
+    }*/
     private function refresh_ffCalcXML(){
         $File = file_get_contents("https://fantasyfootballcalculator.com/adp_xml.php");
         if(!file_exists(getcwd() . "\\resources\\xml\\ff_calc_xml.xml") || (time() - filemtime(getcwd() . "\\resources\\xml\\ff_calc_xml.xml") > 3600)){
             file_put_contents(getcwd() . "\\resources\\xml\\ff_calc_xml.xml", $File);
             }
         }
-    }*/
+    }//*/
