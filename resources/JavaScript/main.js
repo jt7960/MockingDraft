@@ -1,11 +1,10 @@
 //Page Setup
 var draft_status = {
-  'round':0,
-  'pick':0
 }
 var draft_log = { //draft_log.push({'round':1, 'pick':1, 'overall':1, 'team':'team1', 'player':'whoever', 'position':'RB'});
   'picks':[]
 }
+
 //UI
 function hide_draft_config(){
   event.preventDefault();
@@ -62,10 +61,9 @@ function launch_new_draft(event){
   draft_config.positions.forEach(function(position){
     num_rounds +=parseInt(position.quantity);
   });
-  //
-  
-    
-}
+  draft_status = {'round':1, 'pick':1};
+  }
+
 //ajax
 function load_team_boards(url, data){
   xhr = new XMLHttpRequest();
