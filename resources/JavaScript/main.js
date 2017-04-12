@@ -72,7 +72,6 @@ function load_team_boards(url, data){
   xhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById('team_boards_cont').innerHTML = xhr.responseText;
-        //document.getElementById('team_boards_cont').innerHTML = 'helo';
         console.log(xhr.responseText);
       }
       else(console.log(xhr.status));
@@ -83,14 +82,14 @@ function load_team_boards(url, data){
   xhr.send(data);
 }
 function load_player_list(url, data){
-  xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(){
+  exhr = new XMLHttpRequest();
+  exhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('player_list').innerHTML = xhr.responseText;
+        document.getElementById('player_list').innerHTML = exhr.responseText;
       }
     }
-  xhr.open('GET', url, true);
-  xhr.send();
+  exhr.open('GET', url, true);
+  exhr.send();
   }
 
 function draft_player(){
