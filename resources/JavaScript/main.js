@@ -132,8 +132,6 @@ function add_player_to_team_board(draft_log_entry){
   var available_spots = team_board.getElementsByClassName(draft_log_entry.position);
   console.log(available_spots);
   //works to here!!
-  var cells = 
-
 }
 //ajax
 function load_team_boards(url, data){
