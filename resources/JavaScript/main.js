@@ -20,7 +20,6 @@ function show_draft_config(event){
 }
 function select_league_type(){
   var league_type = document.getElementById('stan_idp').value;
-  console.log(league_type);
   if(league_type == 'Standard'){
     document.getElementById('idp_league_def').style.display = 'none';
     document.getElementById('standard_league_def').style.display = 'block';
@@ -35,8 +34,11 @@ function launch_new_draft(event){
   event.preventDefault();
   //get data from draft config
   var source = document.getElementById('form_ranks').value;
+
+
   var draft_config = {
-    'teams':document.getElementById('form_num_teams').value,
+    'num_teams':document.getElementById('form_num_teams').value,
+    'num_rounds':'',
     'positions':[
       {'name':'QB', 'quantity':document.getElementById('form_num_QBs').value},
       {'name':'RB', 'quantity':document.getElementById('form_num_RBs').value},
@@ -53,24 +55,28 @@ function launch_new_draft(event){
       {'name':'Bench', 'quantity':document.getElementById('form_num_bench').value}
       ]
     }
-  load_team_boards('/ffdraft/load_team_boards', draft_config);
-  load_player_list('/ffdraft/load_player_list/'+ source);
-  hide_draft_config();
   //define the number of rounds
   var num_rounds = 0;
   draft_config.positions.forEach(function(position){
     num_rounds +=parseInt(position.quantity);
   });
-  draft_status = {'round':1, 'pick':1};
-  }
+  draft_config.num_rounds = num_rounds;
+  //load the page contents
+  load_team_boards('/ffdraft/load_team_boards', draft_config);
+  load_player_list('/ffdraft/load_player_list/'+ source);
+  hide_draft_config();
 
+  draft_status = {'round':1, 'pick':1};
+  //assign picks
+  draft_picks = assign_draft_picks(draft_config.num_rounds, draft_config.num_teams);
+  console.log(draft_picks);
+  }
 //ajax
 function load_team_boards(url, data){
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById('team_boards_cont').innerHTML = xhr.responseText;
-        console.log(xhr.responseText);
       }
       else(console.log(xhr.status));
     }
@@ -90,8 +96,29 @@ function load_player_list(url, data){
   exhr.send();
   }
 
-function draft_player(){
-  console.log('it works again');
-  }
+function draft_player(event){
+  var player_drafted = event.currentTarget.getAttribute('player_name');
+}
+
+function assign_draft_picks(num_rounds, num_teams){
+  draft_picks = [{}];
+  overall_pick = 1;
+  //console.log(num_rounds + ' ' + num_teams);
+  /*for(i = 1; i<=num_rounds; i++){
+    if(i%2!=0){
+      for(i=1;i<=num_teams;i++){
+       //draft_picks.push({overall_pick:'team'+i});
+       overall_pick++;
+      }
+    }
+    else{
+      for(i=num_teams;i>0;i--){
+        //draft_picks.push({overall_pick:'team'+i})
+        overall_pick++;
+      }
+    }
+  }*/
+  return draft_picks;
+}
 
 //Auto
