@@ -90,10 +90,11 @@ body{
 .player_list_row:even{
     background-color:lightcoral;
 }
-.player_list_row:hover{
+.player_list_row:not([drafted=true]):hover{
     background-color:red;
     cursor:pointer;
 }
+
 
 /*Team Boards*/
 #team_boards_cont{

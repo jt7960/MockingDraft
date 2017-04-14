@@ -69,28 +69,34 @@ function launch_new_draft(event){
   //var pick = draft_picks.find(get_picking_team); //use this to determine whose pick it is
 }
 function draft_player(event){
-  var picking_team = draft_picks.find(get_picking_team); //see (ctrl-f): confusing as hell
-  //create draft log entry object
-  var draft_log_entry = {
-    'round':draft_status.round, 
-    'pick':draft_status.pick, 
-    'overall_pick':draft_status.overall_pick,
-    //'team':picking_team.team,
-    'team':picking_team.team, //see (ctrl-f): confusing as hell
-    'player':event.currentTarget.getAttribute('player_name'),
-    'position':event.currentTarget.getAttribute('position')
-  };
-  //add log entry to log
-  draft_log.picks.push(draft_log_entry);
-  //add player to team object -- NEED TO CREATE TEAM OBJECTS!
+  var drafted = event.currentTarget.getAttribute('drafted');
+  if(drafted == 'false'){
+    var picking_team = draft_picks.find(get_picking_team); //see (ctrl-f): confusing as hell
+    //create draft log entry object
+    var draft_log_entry = {
+      'round':draft_status.round, 
+      'pick':draft_status.pick, 
+      'overall_pick':draft_status.overall_pick,
+      //'team':picking_team.team,
+      'team':picking_team.team, //see (ctrl-f): confusing as hell
+      'player':event.currentTarget.getAttribute('player_name'),
+      'position':event.currentTarget.getAttribute('position')
+    };
+    console.log(draft_log_entry.team);
+    //try to add player to team board
+    if(add_player_to_team_board(draft_log_entry)){
+      //add log entry to log
+      draft_log.picks.push(draft_log_entry);
+      //advance the pick
+      //add player to team object -- NEED TO CREATE TEAM OBJECTS!
+      event.currentTarget.setAttribute('drafted', 'true');
+      advance_pick();
+    }
+    else{
+      alert('cannot draft anymore '+ draft_log_entry.position+ 's');
+    } //here
+  }
 
-  //add player to team board
-  add_player_to_team_board(draft_log_entry);
-  console.log(draft_log);
-  //add the player to the team board
-  //advance the pick
-  advance_pick();
-  //console.log(draft_status);
 }
 function assign_draft_picks(num_rounds, num_teams){ //this will eventually faciliate trading picks
   var draft_picks = [];
@@ -127,11 +133,21 @@ function advance_pick(){
   }
 }
 function add_player_to_team_board(draft_log_entry){
+  var position = draft_log_entry.position;
   var team_board = document.getElementById('team'+draft_log_entry.team+'board');
-  console.log(team_board);
-  var available_spots = team_board.getElementsByClassName(draft_log_entry.position);
-  console.log(available_spots);
-  //works to here!!
+  var available_position_rows = team_board.getElementsByClassName(position);
+  if(available_position_rows.length === 0){
+    var available_position_rows = team_board.getElementsByClassName('bench');
+    var position = 'bench';
+    if(available_position_rows.length === 0){
+      return false;
+    }
+  }
+  var player_name_cell = available_position_rows[0].getElementsByClassName('team_board_player')[0];
+  player_name_cell.innerHTML = draft_log_entry.player;
+  team_board.getElementsByClassName(position)[0].setAttribute('id', draft_log_entry.player);
+  team_board.getElementsByClassName(position)[0].className = draft_log_entry.player;
+  return true;
 }
 //ajax
 function load_team_boards(url, data){

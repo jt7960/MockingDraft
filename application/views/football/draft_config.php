@@ -9,7 +9,7 @@
             //open form
             echo form_open('FFDraft');
             //number of teams
-            $num_teams = array('8'=>'8', '10'=>'10', '12'=>'12', '14'=>'14', '16'=>'16', '18'=>'18', '20'=>'20');
+            $num_teams = array('1'=>'1','8'=>'8', '10'=>'10', '12'=>'12', '14'=>'14', '16'=>'16', '18'=>'18', '20'=>'20');
             echo form_label('Teams: ', 'form_num_teams');
             echo form_dropdown('num_teams', $num_teams, array('12'=>'12'), array('id'=>'form_num_teams'));
             echo '<br><br>';
