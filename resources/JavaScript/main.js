@@ -71,14 +71,16 @@ function launch_new_draft(event){
 function draft_player(event){
   var drafted = event.currentTarget.getAttribute('drafted');
   if(drafted == 'false'){
-    var picking_team = draft_picks.find(get_picking_team); //see (ctrl-f): confusing as hell
+    var picking_team = draft_picks.find(function(val){
+      return val.overall_pick === draft_status.overall_pick;
+    });
     //create draft log entry object
     var draft_log_entry = {
       'round':draft_status.round, 
       'pick':draft_status.pick, 
       'overall_pick':draft_status.overall_pick,
       //'team':picking_team.team,
-      'team':picking_team.team, //see (ctrl-f): confusing as hell
+      'team':picking_team.team,
       'player':event.currentTarget.getAttribute('player_name'),
       'position':event.currentTarget.getAttribute('position')
     };
@@ -87,8 +89,6 @@ function draft_player(event){
     if(add_player_to_team_board(draft_log_entry)){
       //add log entry to log
       draft_log.picks.push(draft_log_entry);
-      //advance the pick
-      //add player to team object -- NEED TO CREATE TEAM OBJECTS!
       event.currentTarget.setAttribute('drafted', 'true');
       advance_pick();
     }
@@ -118,19 +118,17 @@ function assign_draft_picks(num_rounds, num_teams){ //this will eventually facil
   }
   return draft_picks;
 }
-function get_picking_team(draft_picks){ //this code is confusing as hell, but is used with array.find to work
-  return draft_picks.overall_pick === draft_status.pick;
-}
 function advance_pick(){
   if(draft_status.pick == draft_config.num_teams){
     draft_status.round++;
     draft_status.pick = 1;
-    overall_pick++;
+    draft_status.overall_pick++;
   }
   else{
     draft_status.pick++;
     draft_status.overall_pick++;
   }
+  console.log(draft_status);
 }
 function add_player_to_team_board(draft_log_entry){
   var position = draft_log_entry.position;
