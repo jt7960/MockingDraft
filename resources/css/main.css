@@ -1,5 +1,5 @@
 body{
-    background-color:beige;
+    background-color:#999999;
     grid-gap:1px;
     font-family: sans-serif;
     text-align:center;
@@ -19,10 +19,10 @@ body{
     position:fixed;
     width:500px;
     height:800px;
-    background:white;
+    background:#007DC3;
     left:25%;
     top:10%;
-    border: 5px groove blue;
+    border: 5px groove #003399;
     border-radius:10px;
 }
 
@@ -31,12 +31,17 @@ body{
     padding:5px;
     text-align:center;
     font-size: 2em;
-    border-bottom: 5px groove blue;
+    border-bottom: 5px groove #003399;
 }
 
 #config_form_cont{
+
     padding-top:25px;
     text-align:center;
+    color:white;
+    letter-spacing: 2px;
+    font-weight:600;
+    font-size: 16px;
 }
 
 #standard_league_def{
@@ -51,7 +56,8 @@ body{
     display:grid;
     grid-template-columns:33vw 33vw 33vw;
     grid-gap: 1px;
-    border:1px solid black;
+    /*border:1px solid black;*/
+    background-color:#CCCCCC;
     min-height:10vh;
     max-height: 10vh;
 }
@@ -59,7 +65,7 @@ body{
 .body_container{
     display:grid;
     grid-template-columns:25vw 60vw 15vw;
-    border: 1px solid black;
+    /*/*border: 1px solid black;*/
     height:87vh;
     width:100vw;
 }
@@ -73,7 +79,7 @@ body{
     grid-template-columns:10% 75% 10%;
 }
 #player_list{
-    border:1px solid black;
+    /*border:1px solid black;*/
     overflow:scroll;
     height:85vh;
 }
@@ -83,6 +89,10 @@ body{
     padding-right:5px;
     display:grid;
     grid-template-columns:10% 75% 10%;
+}
+.player_list_row[drafted="true"]{
+    background-color:#CCCCCC;
+    color:yellow;
 }
 .player_list_row:odd{
     background-color:lightblue;
@@ -100,7 +110,7 @@ body{
 #team_boards_cont{
     overflow:scroll;
     max-height:90vh;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 .team_board{

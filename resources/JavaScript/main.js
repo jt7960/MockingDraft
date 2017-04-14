@@ -69,8 +69,10 @@ function launch_new_draft(event){
   //var pick = draft_picks.find(get_picking_team); //use this to determine whose pick it is
 }
 function draft_player(event){
+  //verify the player hasn't already been drafted
   var drafted = event.currentTarget.getAttribute('drafted');
   if(drafted == 'false'){
+    //identify the picking team
     var picking_team = draft_picks.find(function(val){
       return val.overall_pick === draft_status.overall_pick;
     });
@@ -84,8 +86,7 @@ function draft_player(event){
       'player':event.currentTarget.getAttribute('player_name'),
       'position':event.currentTarget.getAttribute('position')
     };
-    console.log(draft_log_entry.team);
-    //try to add player to team board
+    //try to add player to team board (will fail if applicable position slots and all bench slots are full)
     if(add_player_to_team_board(draft_log_entry)){
       //add log entry to log
       draft_log.picks.push(draft_log_entry);
@@ -96,7 +97,6 @@ function draft_player(event){
       alert('cannot draft anymore '+ draft_log_entry.position+ 's');
     } //here
   }
-
 }
 function assign_draft_picks(num_rounds, num_teams){ //this will eventually faciliate trading picks
   var draft_picks = [];
