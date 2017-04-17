@@ -16,9 +16,9 @@
 
     <div id='player_list_container'>
         <div id='player_list_title'>
-            <div>Postion</div>
-            <div>Player Name</div>
-            <div>ADP</div>
+                <div>Postion</div>
+                <div>Player Name</div>
+                <div>ADP</div>
         </div>
         <div id='player_list'>
         </div>

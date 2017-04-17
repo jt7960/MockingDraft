@@ -1,4 +1,14 @@
 
+<div id='team_board_tabs'>
+    <nav>
+        <ul>
+            <li class='active_tab'>Team Boards</li>
+            <li>Draft Board</li>
+            <li>TBD</li>
+            <li>TBF</li>
+        </ul>
+    </nav>
+</div>
 <?php
 $config = json_decode($config);
 
