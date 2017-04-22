@@ -34,10 +34,11 @@
     max-height:600px;
     float:left;
     border-collapse: collapse;
+    border-radius:5%;
     background-color:#FFFFFF;
 }
 .team_board td{
-    padding:2px;
+    padding:4px;
 }
 .team_board_player{
     width:70%;

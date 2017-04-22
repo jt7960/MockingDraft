@@ -150,6 +150,9 @@ function add_player_to_team_board(draft_log_entry){
   team_board.getElementsByClassName(position)[0].className = draft_log_entry.player;
   return true;
 }
+function undo_selection(){
+  
+}
 //ajax
 function load_team_boards(url, data){
   xhr = new XMLHttpRequest();
