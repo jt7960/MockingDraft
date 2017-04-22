@@ -1,29 +1,22 @@
-<div id='page_container'>
-    <div class='menu_container'>
-        <div id='menu_title'>
-            <span>Mocking Draft: Fantasy Football</span>
-            <br>
-            <a href='' id='link_show_draft_config' class='show_draft_config' onclick='show_draft_config(event);'>Configure Draft</a>
-        </div>
-        <div id='menu_body'>
-            <span>some menuy stuff</span>
-        </div>
-        <div id='menu_auth'>
-            <span>login logout</span>
-        </div>
-    </div>
-    <div class='body_container' onclick='hide_draft_config()'>
+    <body>
+        <div id='page_wrapper'>
+            <div id='menu'>
+                <span class='title'>Mocking Draft</span>
+            </div>
+            <div id='player_select_column'>
 
-    <div id='player_list_container'>
-        <div id='player_list_title'>
-                <div>Postion</div>
-                <div>Player Name</div>
-                <div>ADP</div>
+            </div>
+            <div id='overview_column'>
+                <div id='overview_tabs'>
+                    <div id='draft_config_tab' class='selected' onclick='highlight_tab("draft_config_tab", "draft_config")'>Draft Config</div>
+                    <div id='team_boards_tab' class='unselected' onclick='highlight_tab("team_boards_tab", "team_boards")'>Team Boards</div>
+                    <div id='draft_grid_tab' class='unselected' onclick='highlight_tab("draft_grid_tab", "draft_grid")'>Draft Grid</div>
+                </div>
+                <div id='overview'>
+                    <div id='draft_config'></div>
+                    <div id='team_boards'></div>
+                    <div id='draft_grid'></div>
+                </div>
+            </div>
+            <div id='draft_log_column'></div>
         </div>
-        <div id='player_list'>
-        </div>
-    </div>
-    <div id='team_boards_cont'></div>
-    <div id='draft_history_list'></div>
-    </div>
-</div>

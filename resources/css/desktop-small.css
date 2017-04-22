@@ -1,0 +1,36 @@
+#page_wrapper{
+    display:grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(849px, 3fr);
+    grid-template-rows: minmax(10vh, 10vh) minmax(83vh, 83vh) minmax(5vh, 5vh);
+    box-sizing: border-box;
+    grid-gap:minmax(3px, 3px);
+}
+#menu{
+    grid-column: span 2;
+    grid-row:1;
+    background-color:yellow;
+}
+#player_select_column{
+    grid-column:1;
+    grid-row:2;
+    background-color:orange;
+    overflow-y: scroll;
+}
+#overview_column{
+    grid-column:2;
+    grid-row:2;
+    background-color:red;
+    overflow-y: scroll;
+}
+#draft_log_column{
+    grid-column:1;
+    grid-row:2;
+    background-color:greenyellow;
+    overflow-y: scroll;
+    display:none;
+}
+#footer{
+    grid-column: span 2;
+    grid-row:3;
+    background-color: orangered;
+}

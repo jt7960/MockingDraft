@@ -1,0 +1,63 @@
+#draft_config{
+    text-align:center;
+}
+
+.form_title{
+    font-size:18px;
+    font-weight:600;
+    display:block;
+}
+
+#overview_tabs{
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: minmax(25px, 25px);
+    text-align:center;
+    cursor: pointer;
+    font-weight:bold;
+    background-color:white;
+}
+    #overview_tabs div{
+        vertical-align:middle;
+    }
+    #overview_tabs div:hover{
+        background-color:#E0FFFF;
+    }
+    #overview_tabs div.selected{
+        background-color:#ADD8E6;
+    }
+
+/*Team Boards*/
+.team_board{
+    margin:10px;
+    max-width:30%;
+    max-height:600px;
+    float:left;
+    border-collapse: collapse;
+    background-color:#FFFFFF;
+}
+.team_board td{
+    padding:2px;
+}
+.team_board_player{
+    width:70%;
+}
+.team_board_pick, team_board_position{
+    width:15%;
+}
+/*Player List*/
+.player_list_row{
+    margin-top:5px;
+    margin-bottom:5px;
+    padding-left:5px;
+    padding-right:5px;
+    display:grid;
+    grid-template-columns:10% 75% 10%;
+}
+.player_list_row[drafted="true"]{
+    opacity:0.4;
+}
+.player_list_row:not([drafted=true]):hover{
+    cursor:pointer;
+    background:linear-gradient(to right, white , Green);
+}

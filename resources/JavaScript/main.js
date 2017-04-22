@@ -5,18 +5,7 @@ var draft_log = {'picks':[]}
 var draft_config = {};
 
 //UI
-function hide_draft_config(){
-  event.preventDefault();
-  document.getElementById('page_cover').style.display = 'none';
-  document.getElementById('config_module').style.display = 'none';
-  document.getElementById('page_container').style.background = 'rgba(0,0,0,0)';
-}
-function show_draft_config(event){
-  event.preventDefault();
-  document.getElementById('page_cover').style.display = 'block';
-  document.getElementById('config_module').style.display = 'block';
-  document.getElementById('page_container').style.background = 'rgba(0,0,0,0.5)';
-}
+
 function select_league_type(){
   var league_type = document.getElementById('stan_idp').value;
   if(league_type == 'Standard'){
@@ -28,9 +17,24 @@ function select_league_type(){
     document.getElementById('idp_league_def').style.display = 'block';
   }
 }
+function highlight_tab(tabId, overviewId){
+  var selected = document.getElementsByClassName('selected');
+  [].forEach.call(selected, function(element){
+    element.className = 'unselected';
+  });
+  var overviews = document.getElementById('overview').children;
+  [].forEach.call(overviews, function(element){
+    element.style.display = 'none';
+  });
+  document.getElementById(overviewId).style.display = 'block';
+  document.getElementById(tabId).className = 'selected';
+}
+
 //Draft
 function launch_new_draft(event){
   event.preventDefault();
+  highlight_tab('team_boards_tab', 'team_boards');
+ 
   //get data from draft config
   var source = document.getElementById('form_ranks').value;
   draft_config = {
@@ -61,7 +65,6 @@ function launch_new_draft(event){
   //load the page contents
   load_team_boards('/ffdraft/load_team_boards', draft_config);
   load_player_list('/ffdraft/load_player_list/'+ source);
-  hide_draft_config();
   draft_status = {'round':1, 'pick':1, 'overall_pick':1};
   //assign picks
   draft_picks = assign_draft_picks(draft_config.num_rounds, draft_config.num_teams);
@@ -152,7 +155,7 @@ function load_team_boards(url, data){
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('team_boards_cont').innerHTML = xhr.responseText;
+        document.getElementById('team_boards').innerHTML = xhr.responseText;
       }
       else{
         //(console.log(xhr.status));
@@ -167,7 +170,7 @@ function load_player_list(url, data){
   exhr = new XMLHttpRequest();
   exhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('player_list').innerHTML = exhr.responseText;
+        document.getElementById('player_select_column').innerHTML = exhr.responseText;
       }
     }
   exhr.open('GET', url, true);
@@ -175,3 +178,15 @@ function load_player_list(url, data){
 }
 
 //document.ready
+function load_draft_config(){
+  dc_xhr = new XMLHttpRequest();
+  dc_xhr.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('draft_config').innerHTML = dc_xhr.responseText;
+      }
+    }
+  dc_xhr.open('GET', '/ffdraft/load_draft_config/', true);
+  dc_xhr.send();
+}
+
+load_draft_config();
