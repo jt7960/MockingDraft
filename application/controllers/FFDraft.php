@@ -36,6 +36,10 @@ class FFDraft extends CI_Controller {
         $this->load->view('football/player_list.php', $data);
     }
 
+    public function css_test(){
+        $this->load->view('football/css_test.php');
+    }
+
     private function refresh_ffCalcXML_at_work(){
         $aContext = array(
             'http' => array(
