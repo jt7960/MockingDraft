@@ -1,0 +1,33 @@
+body{
+    background:linear-gradient(to right, white , DarkGreen);
+}
+#page_wrapper{
+    max-height:100vh;
+    display:grid;
+    grid-template-columns: minmax(250px, 1fr) minmax(800px, 3fr) minmax(150px, 1fr);
+    grid-template-rows: minmax(100px, 10vh) minmax(650px, 90vh);
+    box-sizing: border-box;
+    grid-gap:minmax(3px, 3px);
+}
+#menu{
+    grid-column: span 3;
+    grid-row:1;
+}
+    #menu .title{
+        font-size:100px;
+    }
+#player_select_column{
+    grid-column:1;
+    grid-row:2;
+    overflow-y: scroll;
+}
+#overview_column{
+    grid-column:2;
+    grid-row:2;
+    overflow-y: scroll;
+}
+#draft_log_column{
+    grid-column:3;
+    grid-row:2;
+    overflow-y: scroll;
+}

@@ -15,8 +15,6 @@ class FFDraft extends CI_Controller {
         $data['config'] = '';
         $this->load->view('common/head.php', $data);
         $this->load->view('football/draft.php');
-        $this->load->view('common/foot.php');
-        $this->load->view('football/draft_config.php');
     }
 
     public function load_team_boards(){
@@ -36,8 +34,10 @@ class FFDraft extends CI_Controller {
         $this->load->view('football/player_list.php', $data);
     }
 
-    public function css_test(){
-        $this->load->view('football/css_test.php');
+
+    public function load_draft_config(){
+        $this->load->helper('form');
+        $this->load->view('/football/draft_config.php');
     }
 
     private function refresh_ffCalcXML_at_work(){
