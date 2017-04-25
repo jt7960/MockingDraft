@@ -13,7 +13,7 @@
     grid-column:2;
     display:grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: minmax(25px, 25px);
+    /*grid-template-rows: minmax(25px, 25px);*/
     text-align:center;
     cursor: pointer;
     font-weight:bold;
