@@ -4,8 +4,8 @@ body{
 #page_wrapper{
     max-height:100vh;
     display:grid;
-    grid-template-columns: minmax(250px, 1fr) minmax(800px, 3fr) minmax(150px, 1fr);
-    grid-template-rows: minmax(100px, 10vh) minmax(650px, 90vh);
+    grid-template-columns: minmax(250px, 1fr) minmax(700px, 3fr) minmax(150px, 1fr);
+    grid-template-rows: minmax(100px, 10vh) minmax(2vh, 3vh) minmax(550px, 87vh);
     box-sizing: border-box;
     grid-gap:minmax(3px, 3px);
 }
@@ -18,16 +18,16 @@ body{
     }
 #player_select_column{
     grid-column:1;
-    grid-row:2;
+    grid-row:3;
     overflow-y: scroll;
 }
 #overview_column{
     grid-column:2;
-    grid-row:2;
+    grid-row:3;
     overflow-y: scroll;
 }
 #draft_log_column{
     grid-column:3;
-    grid-row:2;
+    grid-row:3;
     overflow-y: scroll;
 }

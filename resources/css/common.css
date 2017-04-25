@@ -9,6 +9,8 @@
 }
 
 #overview_tabs{
+    grid-row:2;
+    grid-column:2;
     display:grid;
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: minmax(25px, 25px);
@@ -18,7 +20,7 @@
     background-color:white;
 }
     #overview_tabs div{
-        vertical-align:middle;
+        height:100%;
     }
     #overview_tabs div:hover{
         background-color:#E0FFFF;
@@ -26,6 +28,15 @@
     #overview_tabs div.selected{
         background-color:#ADD8E6;
     }
+#player_select_controls{
+    text-align:center;
+    height:100%;
+    background-color:white;
+    grid-row:2;
+    grid-column:1;
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+}
 
 /*Team Boards*/
 .team_board{
