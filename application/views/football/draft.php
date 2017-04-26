@@ -4,9 +4,22 @@
                 <span class='title'>Mocking Draft</span>
             </div>
             <div id='player_select_controls'>
-                <div id='undo'>Undo</div>
-                <div id='redo'>Redo</div>
-                <div id='filter'><select id='filter_position'><option value='' selected disabled>FIlter Postion</option></select></div>
+                <div id='undo' onclick='undo_pick()'>Undo</div>
+                <div id='redo'onclick='redo_pick()'>Redo</div>
+                <div id='filter' onchange='filter_position()'>
+                    <select id='filter_position'>
+                        <option value='' selected disabled>Filter Postion</option>
+                        <option value='QB'>QB</option>
+                        <option value='RB'>RB</option>
+                        <option value='WR'>WR</option>
+                        <option value='TE'>TE</option>
+                        <option value='PK'>PK</option>
+                        <option value='Def'>Def</option>
+                        <option value='DE'>DE</option>
+                        <option value='LB'>LB</option>
+                        <option value='DB'>DB</option>
+                    </select>
+                </div>
             </div>
             <div id='player_select_column'></div>
             <div id='overview_tabs'>

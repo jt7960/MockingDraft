@@ -31,7 +31,7 @@ function highlight_tab(tabId, overviewId){
 }
 
 //Draft
-function launch_new_draft(event){
+function launch_new_draft(){
   event.preventDefault();
   highlight_tab('team_boards_tab', 'team_boards');
  
@@ -71,7 +71,7 @@ function launch_new_draft(event){
   //console.log(draft_picks.indexOf(draft_picks[1]));
   //var pick = draft_picks.find(get_picking_team); //use this to determine whose pick it is
 }
-function draft_player(event){
+function draft_player(){
   //verify the player hasn't already been drafted
   var drafted = event.currentTarget.getAttribute('drafted');
   if(drafted == 'false'){
@@ -150,8 +150,13 @@ function add_player_to_team_board(draft_log_entry){
   team_board.getElementsByClassName(position)[0].className = draft_log_entry.player;
   return true;
 }
-function undo_selection(){
-  
+function undo_pick(){
+  //remove the last pick from the draft log
+  var undid = draft_log.picks.pop();
+  console.log(undid);
+}
+function redo_pick(undid){
+  var player_row = document.querySelector('div[player_name="'+undid.player+'"]')
 }
 //ajax
 function load_team_boards(url, data){
