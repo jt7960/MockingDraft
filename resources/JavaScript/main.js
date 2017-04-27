@@ -4,6 +4,27 @@ var draft_status = {}
 var draft_log = {'picks':[]}
 var draft_config = {};
 
+function team() {
+  this.draftPostition = 0;
+  this.name = '';
+  this.players = [];
+  this.draftPicks = [];
+}
+ function league() {
+   this.scoringType = 'standard'; //or PPR, matters for ADP info
+   this.idp = false;
+   this.forceRosterMins = true; //false to let teams pick any combinations of positions
+   this.QBs = 0;
+   this.WRs = 0;
+   this.RBs = 0;
+   this.TEs = 0;
+   this.PKs = 0;
+   this.Defs = 0;
+   this.DLs = 0;
+   this.LBs = 0;
+   this.DBs = 0;
+   this.Bench = 0;
+ }
 //UI
 
 function select_league_type(){
