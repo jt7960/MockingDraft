@@ -226,7 +226,7 @@ function load_team_boards(url, data){
 
 function drag(ev){
   console.log('dragging!');
-  ev.dataTransfer.setData('text', ev.target.getAttribute("player_name"));
+  ev.dataTransfer.setData('text', ev.target.innerText);
   var data = ev.dataTransfer.getData('text');
   console.log(data);
 }
