@@ -57,6 +57,18 @@
 .team_board_pick, team_board_position{
     width:15%;
 }
+
+/*draft grid*/
+table.draft_grid{
+    width:95%;
+    margin: auto auto;
+}
+th.draft_grid div, td.draft_grid div{
+    border:1px solid black;
+    border-collapse: collapse;
+    min-height:100px;
+}
+
 /*Player List*/
 .player_list_row{
     margin-top:5px;

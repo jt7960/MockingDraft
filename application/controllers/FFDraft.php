@@ -22,6 +22,12 @@ class FFDraft extends CI_Controller {
         $this->load->view('football/team_boards.php', $data);
     }
 
+    public function load_draft_grid(){
+        $data['config'] = file_get_contents('php://input');
+        $this->load->view('football/draft_grid.php', $data);
+    }
+
+
     public function load_player_list($source){
         if($source == 'ffcalc'){
             if(file_exists(getcwd() . "\\resources\\xml\\ff_calc_xml.xml")){
