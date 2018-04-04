@@ -85,6 +85,7 @@ function launch_new_draft(){
   draft_config.num_rounds = num_rounds;
   //load the page contents
   load_team_boards('/ffdraft/load_team_boards', draft_config);
+  load_draft_grid('/ffdraft/load_draft_grid', draft_config);
   load_player_list('/ffdraft/load_player_list/'+ source);
   draft_status = {'round':1, 'pick':1, 'overall_pick':1};
   //assign picks
@@ -180,21 +181,22 @@ function redo_pick(undid){
   var player_row = document.querySelector('div[player_name="'+undid.player+'"]')
 }
 //ajax
-function load_team_boards(url, data){
-  xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(){
+function load_draft_grid(url, data){
+  dg_xhr = new XMLHttpRequest();
+  dg_xhr.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('team_boards').innerHTML = xhr.responseText;
+        document.getElementById('draft_grid').innerHTML = dg_xhr.responseText;
       }
       else{
         //(console.log(xhr.status));
       }
     }
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader("Content-type", "application/json");
+  dg_xhr.open('POST', url, true);
+  dg_xhr.setRequestHeader("Content-type", "application/json");
   data = JSON.stringify(data);
-  xhr.send(data);
+  dg_xhr.send(data);
 }
+
 function load_player_list(url, data){
   exhr = new XMLHttpRequest();
   exhr.onreadystatechange = function(){
@@ -205,6 +207,35 @@ function load_player_list(url, data){
   exhr.open('GET', url, true);
   exhr.send();
 }
+
+function load_team_boards(url, data){
+  tb_xhr = new XMLHttpRequest();
+  tb_xhr.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('team_boards').innerHTML = tb_xhr.responseText;
+      }
+      else{
+        //(console.log(xhr.status));
+      }
+    }
+  tb_xhr.open('POST', url, true);
+  tb_xhr.setRequestHeader("Content-type", "application/json");
+  data = JSON.stringify(data);
+  tb_xhr.send(data);
+}
+
+function drag(ev){
+  console.log('dragging!');
+  ev.dataTransfer.setData('text', ev.target.innerText);
+  var data = ev.dataTransfer.getData('text');
+  console.log(data);
+}
+//drag and drop
+function draft_by_drop(e){
+  console.log('a drop has happened');
+}
+
+
 
 //document.ready
 function load_draft_config(){
