@@ -8,7 +8,6 @@ class FFDraft extends CI_Controller {
         $this->load->helper("url");
         //self::refresh_ffCalcXML();
     }
-    
     public function index(){
         $this->load->helper('form');
         $data['title'] = 'FF Draft';
@@ -16,12 +15,10 @@ class FFDraft extends CI_Controller {
         $this->load->view('common/head.php', $data);
         $this->load->view('football/draft.php');
     }
-
     public function load_team_boards(){
         $data['config'] = file_get_contents('php://input');
         $this->load->view('football/team_boards.php', $data);
     }
-
     public function load_player_list($source){
         if($source == 'ffcalc'){
             if(file_exists(getcwd() . "\\resources\\xml\\ff_calc_xml.xml")){
@@ -33,13 +30,10 @@ class FFDraft extends CI_Controller {
         }
         $this->load->view('football/player_list.php', $data);
     }
-
-
     public function load_draft_config(){
         $this->load->helper('form');
         $this->load->view('/football/draft_config.php');
     }
-
     private function refresh_ffCalcXML_at_work(){
         $aContext = array(
             'http' => array(
