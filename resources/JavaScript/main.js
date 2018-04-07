@@ -3,6 +3,7 @@
 var draft_status = {}
 var draft_log = {'picks':[]}
 var draft_config = {};
+var last_drafted;
 
 function team() {
   this.draftPostition = 0;
@@ -95,6 +96,7 @@ function launch_new_draft(){
 }
 function draft_player(){
   //verify the player hasn't already been drafted
+  last_draft = event.currentTarget;
   var drafted = event.currentTarget.getAttribute('drafted');
   if(drafted == 'false'){
     //identify the picking team
