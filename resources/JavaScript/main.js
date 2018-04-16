@@ -97,6 +97,7 @@ function launch_new_draft(){
 function draft_player(){
   //verify the player hasn't already been drafted
   last_draft = event.currentTarget;
+  console.log(last_draft);
   var drafted = event.currentTarget.getAttribute('drafted');
   if(drafted == 'false'){
     //identify the picking team
@@ -111,7 +112,8 @@ function draft_player(){
       //'team':picking_team.team,
       'team':picking_team.team,
       'player':event.currentTarget.getAttribute('player_name'),
-      'position':event.currentTarget.getAttribute('position')
+      'position':event.currentTarget.getAttribute('position'),
+      'id':event.currentTarget.getAttribute('id')
     };
     //try to add player to team board (will fail if applicable position slots and all bench slots are full)
     if(add_player_to_team_board(draft_log_entry)){
@@ -124,6 +126,9 @@ function draft_player(){
       alert('cannot draft anymore '+ draft_log_entry.position+ 's');
     } //here
   }
+}
+function draft_player_new(e){
+  console.log(e.currentTarget.getAttribute('player_name'));
 }
 function assign_draft_picks(num_rounds, num_teams){ //this will eventually faciliate trading picks
   var draft_picks = [];
@@ -177,7 +182,9 @@ function add_player_to_team_board(draft_log_entry){
 function undo_pick(){
   //remove the last pick from the draft log
   var undid = draft_log.picks.pop();
-  console.log(undid);
+  console.log(undid.id);
+  document.getElementById(undid.id).setAttribute('drafted', false);
+  //add draft status to draft log (when drafting)? In order to rever to it here?
 }
 function redo_pick(undid){
   var player_row = document.querySelector('div[player_name="'+undid.player+'"]')
