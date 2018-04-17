@@ -1,8 +1,10 @@
 //Page Setup
 
-var draft_status = {}
-var draft_log = {'picks':[]}
+var draft_status = {};
+var draft_log = {'picks':[]};
+var undo_log = {'picks':[]};
 var draft_config = {};
+
 var last_drafted;
 
 function team() {
@@ -26,8 +28,12 @@ function team() {
    this.DBs = 0;
    this.Bench = 0;
  }
-//UI
+//UI and Helpers
+function update_draft_status_indicator(){
+  var dsi = document.getElementById('draft_status_indicator');
+  dsi.innerText = 'Round: ' + draft_status.round + 'Pick: ' + draft_status.pick;
 
+}
 function select_league_type(){
   var league_type = document.getElementById('stan_idp').value;
   if(league_type == 'Standard'){
@@ -50,6 +56,13 @@ function highlight_tab(tabId, overviewId){
   });
   document.getElementById(overviewId).style.display = 'block';
   document.getElementById(tabId).className = 'selected';
+}
+function get_team_board_player_row(player_name){
+  var rows = document.getElementsByClassName('team_board_player');
+  console.log(rows);
+  rows.forEach(function(row){
+    if(row.innerText == player_name){return row;}
+  });
 }
 
 //Draft
@@ -93,6 +106,7 @@ function launch_new_draft(){
   draft_picks = assign_draft_picks(draft_config.num_rounds, draft_config.num_teams);
   //console.log(draft_picks.indexOf(draft_picks[1]));
   //var pick = draft_picks.find(get_picking_team); //use this to determine whose pick it is
+  update_draft_status_indicator();
 }
 function draft_player(){
   //verify the player hasn't already been drafted
@@ -111,7 +125,9 @@ function draft_player(){
       //'team':picking_team.team,
       'team':picking_team.team,
       'player':event.currentTarget.getAttribute('player_name'),
-      'position':event.currentTarget.getAttribute('position')
+      'position':event.currentTarget.getAttribute('position'),
+      'id':event.currentTarget.getAttribute('id')
+      
     };
     //try to add player to team board (will fail if applicable position slots and all bench slots are full)
     if(add_player_to_team_board(draft_log_entry)){
@@ -119,10 +135,11 @@ function draft_player(){
       draft_log.picks.push(draft_log_entry);
       event.currentTarget.setAttribute('drafted', 'true');
       advance_pick();
-    }
+      update_draft_status_indicator();      
+      }
     else{
       alert('cannot draft anymore '+ draft_log_entry.position+ 's');
-    } //here
+    }
   }
 }
 function assign_draft_picks(num_rounds, num_teams){ //this will eventually faciliate trading picks
@@ -177,7 +194,15 @@ function add_player_to_team_board(draft_log_entry){
 function undo_pick(){
   //remove the last pick from the draft log
   var undid = draft_log.picks.pop();
-  console.log(undid);
+  undo_log.picks.push(undid);
+  console.log(undid.id);
+  //console.log(undid.status);
+  document.getElementById(undid.id).setAttribute('drafted', false);
+  get_team_board_player_row(undid.player).innerText = '';
+  draft_status.round = undid.round;
+  draft_status.pick = undid.pick;
+  draft_status.overall_pick = undid.overall_pick;
+  update_draft_status_indicator();
 }
 function redo_pick(undid){
   var player_row = document.querySelector('div[player_name="'+undid.player+'"]')
