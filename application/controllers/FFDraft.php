@@ -6,7 +6,7 @@ class FFDraft extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->helper("url");
-        //self::refresh_ffCalcXML();
+        //self::refresh_ffCalcXML_at_home();
     }
     public function index(){
         $this->load->helper('form');

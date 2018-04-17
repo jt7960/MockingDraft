@@ -1,7 +1,7 @@
     <body>
         <div id='page_wrapper'>
             <div id='menu'>
-                <span class='title'>Mocking Draft</span>
+                <span class='title'>Mocking Draft</span><span id='draft_status_indicator'></span>
             </div>
             <div id='player_select_controls'>
                 <div id='undo' onclick='undo_pick()'>Undo</div>
